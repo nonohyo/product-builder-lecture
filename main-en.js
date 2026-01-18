@@ -17,6 +17,15 @@ const generateMenu = () => {
     menuDiv.classList.add('menu-item');
     menuDiv.textContent = selectedMenu;
     menuDisplay.appendChild(menuDiv);
+
+    if (selectedMenu === 'Pizza') {
+        const pizzaImage = document.createElement('img');
+        pizzaImage.src = 'pizza-5275191_640.jpg';
+        pizzaImage.alt = 'A delicious pizza';
+        pizzaImage.style.maxWidth = '100%';
+        pizzaImage.style.marginTop = '20px';
+        menuDisplay.appendChild(pizzaImage);
+    }
 };
 
 generateBtn.addEventListener('click', generateMenu);
