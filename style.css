@@ -308,3 +308,77 @@ footer {
 #disqus_thread {
     margin-top: 40px;
 }
+
+/* New styles for content pages */
+.content-page {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: left;
+}
+
+.content-article {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.content-article:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.content-article h2 {
+    color: #1a73e8;
+    margin-bottom: 20px;
+}
+
+.content-article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* Styles for lists */
+.content-page ul, .content-page ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.content-page li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.content-section ul {
+    padding-left: 20px;
+}
+
+.content-section li {
+    margin-bottom: 10px;
+}
+
+.adsense-placeholder {
+    margin: 30px 0;
+    min-height: 100px;
+    width: 100%;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
