@@ -104,7 +104,7 @@ img {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.nav {
+.nav-container {
     height: var(--header-height);
     display: flex;
     justify-content: space-between;
@@ -304,10 +304,6 @@ main {
 @media screen and (max-width: 767px) {
     body {
         margin: var(--header-height) 0 0 0;
-    }
-
-    .nav {
-        height: var(--header-height);
     }
     
     .nav-list {
