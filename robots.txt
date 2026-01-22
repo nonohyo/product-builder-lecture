@@ -7,4 +7,4 @@ Allow: /
 User-agent: NaverBot
 Allow: /
 
-Sitemap: https://product-builder-lecture-6ve.pages.dev/sitemap.xml
+Sitemap: https://hyocoding.cc/sitemap.xml
