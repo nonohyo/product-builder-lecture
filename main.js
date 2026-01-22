@@ -1,31 +1,57 @@
-const menuDisplay = document.querySelector('.menu-display');
-const generateBtn = document.querySelector('#generate');
+// Teachable Machine model URL
+const URL = "https://teachablemachine.withgoogle.com/models/AEP282Xz6/";
 
-const dinnerMenus = [
-    '치킨', '피자', '햄버거', '떡볶이', '김치찌개',
-    '된장찌개', '삼겹살', '파스타', '초밥', '라면',
-    '부대찌개', '곱창', '보쌈', '족발', '돈까스',
-    '카레', '짜장면', '짬뽕', '탕수육', '마라탕'
-];
+let model, labelContainer, maxPredictions;
 
-const generateMenu = () => {
-    menuDisplay.innerHTML = ''; // Clear previous menu
-    const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
-    const selectedMenu = dinnerMenus[randomIndex];
+// Initialize the Teachable Machine model
+async function init() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
 
-    const menuDiv = document.createElement('div');
-    menuDiv.classList.add('menu-item');
-    menuDiv.textContent = selectedMenu;
-    menuDisplay.appendChild(menuDiv);
+    // Load the model and metadata
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
 
-    if (selectedMenu === '피자') {
-        const pizzaImage = document.createElement('img');
-        pizzaImage.src = 'pizza-5275191_640.jpg';
-        pizzaImage.alt = '맛있는 피자';
-        pizzaImage.style.maxWidth = '100%';
-        pizzaImage.style.marginTop = '20px';
-        menuDisplay.appendChild(pizzaImage);
+    // Get the label container element
+    labelContainer = document.getElementById("label-container");
+
+    // Create a div for each class label
+    for (let i = 0; i < maxPredictions; i++) {
+        labelContainer.appendChild(document.createElement("div"));
     }
-};
+}
 
-generateBtn.addEventListener('click', generateMenu);
+// Predict the class of the image
+async function predict(image) {
+    const prediction = await model.predict(image);
+    for (let i = 0; i < maxPredictions; i++) {
+        const classPrediction =
+            prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(0) + "%";
+        labelContainer.childNodes[i].innerHTML = classPrediction;
+    }
+}
+
+// Initialize the model when the page loads
+init();
+
+// Event listener for image upload
+document.getElementById("imageUpload").addEventListener("change", async (event) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+        const imageContainer = document.getElementById("image-container");
+        imageContainer.innerHTML = ''; // Clear previous image
+
+        const image = document.createElement('img');
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            image.src = e.target.result;
+            image.width = 200;
+            image.height = 200;
+            imageContainer.appendChild(image);
+            image.onload = () => predict(image); // Run prediction after image is loaded
+        };
+
+        reader.readAsDataURL(files[0]);
+    }
+});
