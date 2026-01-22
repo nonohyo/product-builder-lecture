@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
 Sitemap: https://product-builder-lecture-6ve.pages.dev/sitemap.xml
