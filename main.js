@@ -55,3 +55,20 @@ document.getElementById("imageUpload").addEventListener("change", async (event) 
         reader.readAsDataURL(files[0]);
     }
 });
+
+/* === NAV MENU SHOW/HIDE === */
+const navToggle = document.getElementById('nav-toggle');
+const nav = document.querySelector('.nav'); // Assuming .nav is the parent of .nav-list
+
+if (navToggle && nav) {
+    navToggle.addEventListener('click', () => {
+        nav.classList.toggle('show-menu');
+    });
+
+    // Optional: Close menu when a nav link is clicked
+    const navLinks = document.querySelectorAll('.nav-link');
+    function linkAction() {
+        nav.classList.remove('show-menu');
+    }
+    navLinks.forEach(n => n.addEventListener('click', linkAction));
+}

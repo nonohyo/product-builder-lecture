@@ -2,10 +2,10 @@ const menuDisplay = document.querySelector('.menu-display');
 const generateBtn = document.querySelector('#generate');
 
 const dinnerMenus = [
-    'Chicken', 'Pizza', 'Hamburger', 'Tteokbokki', 'Kimchi Stew',
-    'Soybean Paste Stew', 'Pork Belly', 'Pasta', 'Sushi', 'Ramen',
-    'Budae-jjigae', 'Gopchang', 'Bossam', 'Jokbal', 'Tonkatsu',
-    'Curry', 'Jajangmyeon', 'Jjamppong', 'Tangsuyuk', 'Malatang'
+    '치킨', '피자', '햄버거', '떡볶이', '김치찌개',
+    '된장찌개', '삼겹살', '파스타', '초밥', '라면',
+    '부대찌개', '곱창', '보쌈', '족발', '돈까스',
+    '카레', '짜장면', '짬뽕', '탕수육', '마라탕'
 ];
 
 const generateMenu = () => {
